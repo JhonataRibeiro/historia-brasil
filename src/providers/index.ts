@@ -1,0 +1,1 @@
+export { FactService } from './fact-service/fact';

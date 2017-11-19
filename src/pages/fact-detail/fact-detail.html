@@ -1,0 +1,22 @@
+<ion-header no-border color="light">
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="close()" icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <p class="title">{{fact.title}}</p>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
+  <div class="box-content">
+    <p class="title">Contexto Histórico</p>
+    <hr/>
+    <p class="text-body">{{fact.historicalContext}}</p>
+    <p class="title">Sobre a revolta</p>
+    <hr/>
+    <p class="text-body">{{fact.mainDescription}}</p>
+  </div>
+</ion-content>

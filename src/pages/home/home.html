@@ -1,17 +1,77 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
+    <ion-toolbar>
+        <div padding>
+            <ion-segment [(ngModel)]="revoltas">
+                <ion-segment-button value="nativistas">
+                    Nativistas
+                </ion-segment-button>
+                <ion-segment-button value="emancipacionista">
+                    Separatistas
+                </ion-segment-button>
+            </ion-segment>
+        </div>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content class="card-background-page">
+    <div [ngSwitch]="revoltas">
+        <div *ngSwitchCase="'nativistas'">
+            <!--<ion-card *ngFor="let fact of facts">
+            <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}" />
+            <div class="card-title">{{fact.title}}</div>
+            <div class="card-subtitle">{{fact.startYear}}</div><br/><br/><br/><br/>
+            <div class="card-subtitle"></div>
+            <div class="my-overlay">
+            </div>
+            </ion-card>-->
+            <ion-card (click)="viewDetail(fact)" *ngFor="let fact of revoltsNativist">
+                <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
+                <ion-item>
+                    <h2>{{fact.title}}</h2>
+                    <p>{{fact.startYear}}</p>
+                </ion-item>
+
+                <ion-item>
+                    <span item-left>18 min</span>
+                    <span item-left>(2.6 mi)</span>
+                    <button ion-button icon-left clear item-right>
+                        <ion-icon name="navigate"></ion-icon>
+                        Start
+                    </button>
+                </ion-item>
+            </ion-card>
+        </div>
+        <div *ngSwitchCase="'emancipacionista'">
+            <!--<ion-card *ngFor="let fact of facts">
+        <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}" />
+        <div class="card-title">{{fact.title}}</div>
+        <div class="card-subtitle">{{fact.startYear}}</div><br/><br/><br/><br/>
+        <div class="card-subtitle"></div>
+        <div class="my-overlay">
+        </div>
+        </ion-card>-->
+            <ion-card (click)="viewDetail(fact)" *ngFor="let fact of revoltsEmancipacionists">
+                <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
+                <ion-item>
+                    <h2>{{fact.title}}</h2>
+                    <p>{{fact.startYear}}</p>
+                </ion-item>
+
+                <ion-item>
+                    <span item-left>18 min</span>
+                    <span item-left>(2.6 mi)</span>
+                    <button ion-button icon-left clear item-right>
+                        <ion-icon name="navigate"></ion-icon>
+                        Start
+                    </button>
+                </ion-item>
+            </ion-card>
+        </div>
+    </div>
 </ion-content>
