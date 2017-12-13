@@ -28,8 +28,8 @@ export class HomePage {
 
   populateRevoltsNativist() {
     this.factService.getRevoltsNativists().subscribe((response: Array<Fact>) => {
-      console.log("==> ", response.data);
-      this.revoltsNativist = response.data;
+      console.log("==> ", response);
+      this.revoltsNativist = response;
       console.log("=> ", this.revoltsNativist);
     }, (err) => {
       console.log("error: ", err);
@@ -38,8 +38,8 @@ export class HomePage {
 
   populateRevoltsEmancipationist() {
     this.factService.getRevoltsEmancipationist().subscribe((response: Array<Fact>) => {
-      console.log("==> 2 ", response.data);
-      this.revoltsEmancipacionists = response.data;;
+      console.log("==> 2 ", response);
+      this.revoltsEmancipacionists = response;
       console.log("=> ", this.revoltsEmancipacionists);
     }, (err) => {
       console.log("error: ", err);

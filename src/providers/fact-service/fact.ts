@@ -23,11 +23,11 @@ export class FactService {
   }
 
   getRevoltsNativists(): Observable<Fact[]> {
-    return this.http.post<Fact[]>(HOST_API + '/facts', { "tags": ["Revolta Nativista"]});
+    return this.http.post<Fact[]>(HOST_API + '/facts/bytags', ["NATIVISTA"]);
   }
 
   getRevoltsEmancipationist(): Observable<Fact[]> {
-    return this.http.post<Fact[]>(HOST_API + '/facts', { "tags": ["Revolta Emancipacionista"] });
+    return this.http.post<Fact[]>(HOST_API + '/facts/bytags', ["EMANCIPACIONISTA"]);
   }
 
   public setFact(fact: Fact) {
