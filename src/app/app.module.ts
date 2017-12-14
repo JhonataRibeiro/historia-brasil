@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FactDetailComponent } from '../pages/fact-detail/fact-detail';
+import { QuizPage } from '../pages/quiz/quiz';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FactDetailComponent } from '../pages/fact-detail/fact-detail';
     ContactPage,
     HomePage,
     TabsPage,
-    FactDetailComponent
+    FactDetailComponent,
+    QuizPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { FactDetailComponent } from '../pages/fact-detail/fact-detail';
     ContactPage,
     HomePage,
     TabsPage,
-    FactDetailComponent
+    FactDetailComponent,
+    QuizPage
   ],
   providers: [
     StatusBar,

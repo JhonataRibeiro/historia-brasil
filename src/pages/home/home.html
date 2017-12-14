@@ -22,54 +22,38 @@
 <ion-content class="card-background-page">
     <div [ngSwitch]="revoltas">
         <div *ngSwitchCase="'nativistas'">
-            <!--<ion-card *ngFor="let fact of facts">
-            <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}" />
-            <div class="card-title">{{fact.title}}</div>
-            <div class="card-subtitle">{{fact.startYear}}</div><br/><br/><br/><br/>
-            <div class="card-subtitle"></div>
-            <div class="my-overlay">
-            </div>
-            </ion-card>-->
             <ion-card (click)="viewDetail(fact)" *ngFor="let fact of revoltsNativist">
                 <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
                 <ion-item>
-                    <h2>{{fact.title}}</h2>
                     <p>{{fact.startYear}}</p>
+                    <h2>{{fact.title}}</h2>
                 </ion-item>
 
                 <ion-item>
-                    <span item-left>18 min</span>
-                    <span item-left>(2.6 mi)</span>
-                    <button ion-button icon-left clear item-right>
+                    <!-- <span item-left>18 min</span> -->
+                    <span item-left>#revoltas #nativistas</span>
+                    <!-- <button ion-button icon-left clear item-right>
                         <ion-icon name="navigate"></ion-icon>
                         Start
-                    </button>
+                    </button> -->
                 </ion-item>
             </ion-card>
         </div>
         <div *ngSwitchCase="'emancipacionista'">
-            <!--<ion-card *ngFor="let fact of facts">
-        <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}" />
-        <div class="card-title">{{fact.title}}</div>
-        <div class="card-subtitle">{{fact.startYear}}</div><br/><br/><br/><br/>
-        <div class="card-subtitle"></div>
-        <div class="my-overlay">
-        </div>
-        </ion-card>-->
             <ion-card (click)="viewDetail(fact)" *ngFor="let fact of revoltsEmancipacionists">
                 <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
                 <ion-item>
-                    <h2>{{fact.title}}</h2>
                     <p>{{fact.startYear}}</p>
+                    <h2>{{fact.title}}</h2>
                 </ion-item>
 
                 <ion-item>
-                    <span item-left>18 min</span>
-                    <span item-left>(2.6 mi)</span>
-                    <button ion-button icon-left clear item-right>
+                    <!-- <span item-left>18 min</span> -->
+                    <span item-left>#revoltas #emancipacionista</span>
+                    <!-- <button ion-button icon-left clear item-right>
                         <ion-icon name="navigate"></ion-icon>
                         Start
-                    </button>
+                    </button> -->
                 </ion-item>
             </ion-card>
         </div>

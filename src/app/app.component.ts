@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { HomePage } from '../pages/home/home';
+import { QuizPage } from '../pages/quiz/quiz';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,8 @@ export class MyApp {
 
       // used for an example of ngFor and navigation
       this.pages = [
-        { title: 'Home', component: HomePage }
+        { title: 'Revoltas', component: HomePage },
+        { title: 'Quiz', component: QuizPage }
       ];
 
       // Okay, so the platform is ready and our plugins are available.
