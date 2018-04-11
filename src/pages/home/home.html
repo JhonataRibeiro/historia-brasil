@@ -23,7 +23,7 @@
     <div [ngSwitch]="revoltas">
         <div *ngSwitchCase="'nativistas'">
             <ion-card (click)="viewDetail(fact)" *ngFor="let fact of revoltsNativist">
-                <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
+                <img src="./assets/img/revoltas/{{fact.medias[1].images[0].src}}">
                 <ion-item>
                     <p>{{fact.startYear}}</p>
                     <h2>{{fact.title}}</h2>
@@ -41,7 +41,7 @@
         </div>
         <div *ngSwitchCase="'emancipacionista'">
             <ion-card (click)="viewDetail(fact)" *ngFor="let fact of revoltsEmancipacionists">
-                <img src="../../assets/img/revoltas/{{fact.medias[1].images[0].src}}">
+                <img src="./assets/img/revoltas/{{fact.medias[1].images[0].src}}">
                 <ion-item>
                     <p>{{fact.startYear}}</p>
                     <h2>{{fact.title}}</h2>

@@ -7,6 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Fact } from '../../model/Fact';
 import { HOST_API } from './../../app/config';
+import PouchDB from 'pouchdb';
 
 @Injectable()
 export class FactService {
@@ -14,16 +15,34 @@ export class FactService {
   public db :any;
   public remote: any;
   public fact$ :BehaviorSubject<Fact> = new BehaviorSubject(this.fact);
-  //private $fact = new BehaviorSubject(this.fact);
+  public localDb;
 
   constructor(
     private http: HttpClient
   ) {
     this.fact = new Fact();
+    this.localDb = new PouchDB('facts.db');
   }
 
   getRevoltsNativists(): Observable<Fact[]> {
-    return this.http.post<Fact[]>(HOST_API + '/facts/bytags', ["NATIVISTA"]);
+    return this.http.post<Fact[]>(HOST_API + '/facts/bytags', ["NATIVISTA"])
+    .map((response:any)=> {
+      this.toCache(response);
+      return response
+    })
+  }
+
+  toCache(facts:any){
+    facts.map(fact=>{
+      fact._id = fact.id;
+      delete(fact.id);
+      return fact;
+    }).map(fact =>{
+      console.log(fact);
+      this.localDb.put(fact, function(err, response) {
+            if (err) { return console.log(err); }
+          });
+    });
   }
 
   getRevoltsEmancipationist(): Observable<Fact[]> {
@@ -37,26 +56,4 @@ export class FactService {
   public getFact$(): Observable<Fact> {
     return this.fact$.asObservable();
   }
-
-  // private extractData(res: Response) {
-  //   let body = res.json();
-  //   //TODO: adicionar no db
-  //   // this.db.post(body.data);
-  //   return body.data || {};
-  // }
-
-  // private handleError(error: Response | any) {
-  //   // In a real world app, you might use a remote logging infrastructure
-  //   let errMsg: string;
-  //   if (error instanceof Response) {
-  //     const body = error.json() || '';
-  //     const err = body.error || JSON.stringify(body);
-  //     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-  //   } else {
-  //     errMsg = error.message ? error.message : error.toString();
-  //   }
-  //   console.error(errMsg);
-  //   return Observable.throw(errMsg);
-  // }
-
 }
