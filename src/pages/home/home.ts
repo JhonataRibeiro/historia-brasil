@@ -27,10 +27,17 @@ export class HomePage {
   }
 
   populateRevoltsNativist() {
-    this.factService.getRevoltsNativists().subscribe((response: Array<Fact>) => {
-      console.log("==> ", response);
-      this.revoltsNativist = response;
-      console.log("=> ", this.revoltsNativist);
+
+    this.factService.getChached().subscribe((response: Array<Fact>) => {
+      response.forEach((fact:any)=>{
+        this.revoltsNativist.push(fact.doc);
+      })
+      if(!response.length){
+        this.factService.getRevoltsNativists().subscribe((response: Array<Fact>) => {
+          this.revoltsNativist = response;
+        }, (err) => {
+        })
+      }
     }, (err) => {
       console.log("error: ", err);
     })
