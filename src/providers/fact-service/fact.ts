@@ -29,7 +29,15 @@ export class FactService {
       .map((response:any)=> {
         this.toCache(response);
         return response
-      })
+      });
+  }
+
+  getRevoltsEmancipationist(): Observable<Fact[]> {
+    return this.http.post<Fact[]>(HOST_API + '/facts/bytags', ["EMANCIPACIONISTA"])
+    .map((response:any)=> {
+      this.toCache(response);
+      return response
+    });
   }
 
   toCache(facts:any){
@@ -44,36 +52,18 @@ export class FactService {
     });
   }
 
-  // getChached(): Observable<Fact[]> {
-  //   return new Promise((resolve, reject) => {
-  //     this.localDb.allDocs({
-  //       include_docs: true,
-  //       attachments: true
-  //     }).then(function (doc) {
-  //       console.log("from cache:", doc.rows);
-  //       resolve(doc.rows);
-  //     }).catch(function (err) {
-  //       reject(err);
-  //     });
-  //   })
-  // }
-
   getChached(): Observable<Fact[]> {
     return Observable.create(observer => {
       this.localDb.allDocs({
         include_docs: true,
-        attachments: true
+        attachments: true,
+        tags: 'quux'
       }).then(function (doc) {
-        console.log("from cache:", doc.rows);
         observer.next(doc.rows);
       }).catch(function (err) {
         observer.reject(err);
       });
     })
-  }
-
-  getRevoltsEmancipationist(): Observable<Fact[]> {
-    return this.http.post<Fact[]>(HOST_API + '/facts/bytags', ["EMANCIPACIONISTA"]);
   }
 
   public setFact(fact: Fact) {
