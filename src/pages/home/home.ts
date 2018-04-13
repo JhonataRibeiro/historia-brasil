@@ -27,8 +27,7 @@ export class HomePage {
   }
 
   populateRevoltsNativist() {
-
-    this.factService.getChached().subscribe((response: Array<Fact>) => {
+    this.factService.getChached('NATIVISTA').subscribe((response: Array<Fact>) => {
       response.forEach((fact:any)=>{
         this.revoltsNativist.push(fact.doc);
       })
@@ -44,10 +43,17 @@ export class HomePage {
   }
 
   populateRevoltsEmancipationist() {
-    this.factService.getRevoltsEmancipationist().subscribe((response: Array<Fact>) => {
-      console.log("==> 2 ", response);
-      this.revoltsEmancipacionists = response;
-      console.log("=> ", this.revoltsEmancipacionists);
+    this.factService.getChached('EMANCIPACIONISTA').subscribe((response: Array<Fact>) => {
+      response.forEach((fact:any)=>{
+        this.revoltsEmancipacionists.push(fact.doc);
+      })
+      if(!response.length){
+        this.factService.getRevoltsEmancipationist().subscribe((response: Array<Fact>) => {
+          this.revoltsEmancipacionists = response;
+        }, (err) => {
+          console.log("error: ", err);
+        })
+      }
     }, (err) => {
       console.log("error: ", err);
     })

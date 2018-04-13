@@ -52,14 +52,15 @@ export class FactService {
     });
   }
 
-  getChached(): Observable<Fact[]> {
+  getChached(tag:String): Observable<Fact[]> {
     return Observable.create(observer => {
       this.localDb.allDocs({
         include_docs: true,
-        attachments: true,
-        tags: 'quux'
-      }).then(function (doc) {
-        observer.next(doc.rows);
+        attachments: true
+      }).then(function (response) { 
+        observer.next(response.rows.filter(row=>{
+          return !(row && row.doc.tags && row.doc.tags.indexOf(tag));
+        }));
       }).catch(function (err) {
         observer.reject(err);
       });
