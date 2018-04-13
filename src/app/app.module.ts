@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FactDetailComponent } from '../pages/fact-detail/fact-detail';
 import { QuizPage } from '../pages/quiz/quiz';
+import { IndexPage } from '../pages/index/index';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { QuizPage } from '../pages/quiz/quiz';
     HomePage,
     TabsPage,
     FactDetailComponent,
-    QuizPage
+    QuizPage,
+    IndexPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { QuizPage } from '../pages/quiz/quiz';
     HomePage,
     TabsPage,
     FactDetailComponent,
-    QuizPage
+    QuizPage,
+    IndexPage
   ],
   providers: [
     StatusBar,
