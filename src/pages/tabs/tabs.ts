@@ -10,9 +10,9 @@ import { IndexPage } from '../index/index';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
+  tab1Root = IndexPage;
   // tab2Root = AboutPage;
-  tab2Root = IndexPage;
+  // tab2Root = IndexPage;
   tab3Root = ContactPage;
 
   constructor() {

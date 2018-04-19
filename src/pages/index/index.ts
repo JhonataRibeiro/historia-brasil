@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the IndexPage page.
@@ -20,6 +21,10 @@ export class IndexPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IndexPage');
+  }
+
+  private goRevolts(){
+      this.navCtrl.push(HomePage);
   }
 
 }
